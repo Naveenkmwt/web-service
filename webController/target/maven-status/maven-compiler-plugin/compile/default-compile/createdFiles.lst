@@ -1,0 +1,4 @@
+com\yqueue\scube\auth\WebApplication.class
+com\yqueue\scube\webcontroller\jerseyconfig\JerseyConfig.class
+com\yqueue\scube\auth\WebPersistentConfig.class
+com\yqueue\scube\webcontroller\endpoints\DoctorsEndpoints.class
