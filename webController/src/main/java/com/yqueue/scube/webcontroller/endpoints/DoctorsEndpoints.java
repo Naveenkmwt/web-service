@@ -28,7 +28,7 @@ import com.yqueue.scube.service.UserDbService;
  *
  */
 @Component
-@Path("/doctor/api")
+@Path("/doctor/v1/api")
 public class DoctorsEndpoints {
 
 	@Autowired
