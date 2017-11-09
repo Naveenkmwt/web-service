@@ -107,14 +107,7 @@ public class DoctorsEndpoints {
 		return listOfDoctors;
 	}
 
-	@Path("/saveUser")
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response saveUser(User user) {
-		userDbService.saveUser(user);
 
-		return Response.status(200).entity("user registered with this " + user.getPhone() + " number").build();
-	}
 
 	@Path("/contactInfo")
 	@POST

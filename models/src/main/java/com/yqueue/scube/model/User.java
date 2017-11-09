@@ -3,6 +3,7 @@
  */
 package com.yqueue.scube.model;
 
+import java.sql.Blob;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,7 +13,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 /**
  * @author Naveen Kumawat
@@ -33,6 +36,12 @@ public class User {
 	
 	@OneToMany(mappedBy="user",fetch = FetchType.LAZY )
 	private List<DailyAppointment>  dailyAppointmentList;
+	
+	@Column(name="userImage", nullable=true)
+	private Blob userImage;
+	
+	@OneToOne
+	private UserContactInfo userContactInfo;
 	
 	
 	/**
@@ -82,6 +91,30 @@ public class User {
 	 */
 	public void setDailyAppointmentList(List<DailyAppointment> dailyAppointmentList) {
 		this.dailyAppointmentList = dailyAppointmentList;
+	}
+	/**
+	 * @return the userImage
+	 */
+	public Blob getUserImage() {
+		return userImage;
+	}
+	/**
+	 * @param userImage the userImage to set
+	 */
+	public void setUserImage(Blob userImage) {
+		this.userImage = userImage;
+	}
+	/**
+	 * @return the userContactInfo
+	 */
+	public UserContactInfo getUserContactInfo() {
+		return userContactInfo;
+	}
+	/**
+	 * @param userContactInfo the userContactInfo to set
+	 */
+	public void setUserContactInfo(UserContactInfo userContactInfo) {
+		this.userContactInfo = userContactInfo;
 	}
 	
 	

@@ -1,6 +1,6 @@
 
 
-package com.yqueue.scube.auth;
+package com.yqueue.scube.config;
 
 import java.util.Properties;
 
