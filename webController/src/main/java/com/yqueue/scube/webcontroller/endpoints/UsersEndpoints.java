@@ -4,6 +4,7 @@
 package com.yqueue.scube.webcontroller.endpoints;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
@@ -19,7 +20,7 @@ import com.yqueue.scube.service.UserDbService;
  * @author Naveen Kumawat
  *
  */
-@Path("v1/user")
+@Path("/user/v1/api")
 @Component
 public class UsersEndpoints {
 
@@ -31,8 +32,17 @@ public class UsersEndpoints {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response saveUser(User user) {
+		
 		userDbService.saveUser(user);
-
+		
 		return Response.status(200).entity("user registered with this " + user.getPhone() + " number").build();
+	}
+	
+	
+	@GET
+	@Path("/hello")
+	public String hello() {
+
+		return "hello world";
 	}
 }

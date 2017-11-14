@@ -3,7 +3,6 @@
  */
 package com.yqueue.scube.model;
 
-import java.sql.Blob;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,9 +11,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -31,14 +34,15 @@ public class User {
 	
 	@Column(name = "username", nullable = true)
 	private String username;
-	@Column(name = "phone", nullable = false)
+	@Transient
 	private String phone;
 	
 	@OneToMany(mappedBy="user",fetch = FetchType.LAZY )
 	private List<DailyAppointment>  dailyAppointmentList;
 	
+	@Lob
 	@Column(name="userImage", nullable=true)
-	private Blob userImage;
+	private  byte[] userImage;
 	
 	@OneToOne
 	private UserContactInfo userContactInfo;
@@ -83,6 +87,7 @@ public class User {
 	/**
 	 * @return the dailyAppointmentList
 	 */
+	@JsonIgnore
 	public List<DailyAppointment> getDailyAppointmentList() {
 		return dailyAppointmentList;
 	}
@@ -95,13 +100,13 @@ public class User {
 	/**
 	 * @return the userImage
 	 */
-	public Blob getUserImage() {
+	public byte[] getUserImage() {
 		return userImage;
 	}
 	/**
 	 * @param userImage the userImage to set
 	 */
-	public void setUserImage(Blob userImage) {
+	public void setUserImage(byte[] userImage) {
 		this.userImage = userImage;
 	}
 	/**

@@ -7,6 +7,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
 import com.yqueue.scube.webcontroller.endpoints.DoctorsEndpoints;
+import com.yqueue.scube.webcontroller.endpoints.UsersEndpoints;
 
 /**
  * @author Naveen Kumawat
@@ -19,6 +20,8 @@ public class JerseyConfig extends ResourceConfig {
 		System.out.println("----------------HELLO WORLD----------------");
 		//register("com.yqueue.webcontroller.endpoints");
 		register(DoctorsEndpoints.class);
+		register(UsersEndpoints.class);
+		
 	//	 register(new ObjectMapperContextResolver(objectMapper));
 		packages("com.yqueue.webcontroller.endpoints");
 	
