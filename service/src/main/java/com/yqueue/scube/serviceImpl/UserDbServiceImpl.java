@@ -15,9 +15,11 @@ import com.yqueue.scube.model.ContactInfo;
 import com.yqueue.scube.model.DoctorsAddress;
 import com.yqueue.scube.model.DoctorsDetails;
 import com.yqueue.scube.model.User;
+import com.yqueue.scube.model.UserContactInfo;
 import com.yqueue.scube.repository.DoctorsAddressRepo;
 import com.yqueue.scube.repository.DoctorsContactRepo;
 import com.yqueue.scube.repository.DoctorsDetailsRepo;
+import com.yqueue.scube.repository.UserContactInfoRepo;
 import com.yqueue.scube.repository.UserRepo;
 import com.yqueue.scube.service.UserDbService;
 
@@ -40,6 +42,8 @@ public class UserDbServiceImpl implements UserDbService{
 	
 	@Autowired
 	private UserRepo userRepo;
+	@Autowired
+	private UserContactInfoRepo userContactRepo ;
 	
 	@Override
 	public void save(DoctorsDetails doctorsDetails) {
@@ -121,8 +125,26 @@ public class UserDbServiceImpl implements UserDbService{
 	@Override
 	public void saveUser(User user) {
 		
+	User existUser = userRepo.findUserByPhoneNo(Long.parseLong(user.getPhone()));
+	if(existUser !=null) {
+		
+		System.out.println("User already registered");
+		
+		existUser.setUserContactInfo(existUser.getUserContactInfo());
+		existUser.setUsername(user.getUsername());
+		existUser.setUserImage(user.getUserImage());
+		
+		userRepo.save(existUser);
+	}
+	else {
+		System.out.println("User not registered ");
+		UserContactInfo userContact = new UserContactInfo();
+		userContact.setUserPhoneNo(Long.parseLong(user.getPhone()));
+		userContactRepo.save(userContact);
+		user.setUserContactInfo(userContact);
 		userRepo.save(user);
 	}
+}
 
 	@Override
 	public void saveContact(ContactInfo contactInfo) {

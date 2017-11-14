@@ -8,15 +8,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.yqueue.scube.model.User;
+import com.yqueue.scube.model.UserContactInfo;
 
 /**
  * @author Naveen Kumawat
  *
  */
 @Repository
-public interface UserRepo extends JpaRepository<User, Long>{
+public interface UserContactInfoRepo extends JpaRepository<UserContactInfo, Long> {
 
-	@Query("select u from User u where u.userContactInfo.userPhoneNo=:phoneNo")
-	public User findUserByPhoneNo(@Param("phoneNo") Long phoneNo);
+//	@Query("select c from UserContactInfo c where c.userPhoneNo =:phone") 
+//	public UserContactInfo findContactNumber(@Param("phone") String phone);
+//	
 }

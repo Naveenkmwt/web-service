@@ -57,7 +57,7 @@ public class DoctorsEndpoints {
 		return "hello world";
 	}
 
-	@POST
+/*	@POST
 	@Path("/saveDoctor")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response saveDoctor(DoctorsDetails doctorsDetails) {
@@ -73,7 +73,7 @@ public class DoctorsEndpoints {
 			return Response.status(Response.Status.ACCEPTED).entity("User has been registered").build();
 		}
 
-	}
+	}*/
 
 	@GET
 	@Path("/city")
