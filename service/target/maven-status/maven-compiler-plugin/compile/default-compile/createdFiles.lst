@@ -1,7 +1,0 @@
-com\yqueue\scube\serviceImpl\UserDbServiceImpl.class
-com\yqueue\scube\repository\DoctorsAddressRepo.class
-com\yqueue\scube\repository\DoctorsContactRepo.class
-com\yqueue\scube\repository\UserRepo.class
-com\yqueue\scube\service\UserDbService.class
-com\yqueue\scube\repository\DoctorsDetailsRepo.class
-com\yqueue\scube\service\AutoLoginService.class
