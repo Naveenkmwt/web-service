@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import com.yqueue.scube.webcontroller.endpoints.DoctorsEndpoints;
 import com.yqueue.scube.webcontroller.endpoints.UsersEndpoints;
+import com.yqueue.scube.filter.CORSFilter;
+
 
 /**
  * @author Naveen Kumawat
@@ -21,6 +23,7 @@ public class JerseyConfig extends ResourceConfig {
 		//register("com.yqueue.webcontroller.endpoints");
 		register(DoctorsEndpoints.class);
 		register(UsersEndpoints.class);
+		register(CORSFilter.class);
 		
 	//	 register(new ObjectMapperContextResolver(objectMapper));
 		packages("com.yqueue.webcontroller.endpoints");

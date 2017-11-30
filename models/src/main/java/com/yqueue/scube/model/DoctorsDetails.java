@@ -53,11 +53,6 @@ public class DoctorsDetails {
     @JoinColumn(name = "contactNo", nullable = false)
 	private	ContactInfo contactInfo;
 	
-	@OneToMany(mappedBy="doctorsDetails",fetch = FetchType.LAZY,cascade = CascadeType.PERSIST )
-	private List<DailyAppointment>  dailyAppointmentList;
-	
-
-	
 	
 
 	/**
@@ -133,7 +128,7 @@ public class DoctorsDetails {
 	/**
 	 * @return the doctorsAddressList
 	 */
-    @JsonProperty
+	@JsonIgnore
 	public List<DoctorsAddress> getDoctorsAddressList() {
 		return doctorsAddressList;
 	}
@@ -141,7 +136,7 @@ public class DoctorsDetails {
 	/**
 	 * @param doctorsAddressList the doctorsAddressList to set
 	 */
-	@JsonIgnore
+	@JsonProperty
 	public void setDoctorsAddressList(List<DoctorsAddress> doctorsAddressList) {
 		this.doctorsAddressList = doctorsAddressList;
 	}
@@ -151,7 +146,7 @@ public class DoctorsDetails {
 	/**
 	 * @return the contactInfo
 	 */
-	@JsonProperty
+	@JsonIgnore
 	public ContactInfo getContactInfo() {
 		return contactInfo;
 	}
@@ -164,19 +159,6 @@ public class DoctorsDetails {
 		this.contactInfo = contactInfo;
 	}
 
-	/**
-	 * @return the dailyAppointmentList
-	 */
-	public List<DailyAppointment> getDailyAppointmentList() {
-		return dailyAppointmentList;
-	}
-
-	/**
-	 * @param dailyAppointmentList the dailyAppointmentList to set
-	 */
-	public void setDailyAppointmentList(List<DailyAppointment> dailyAppointmentList) {
-		this.dailyAppointmentList = dailyAppointmentList;
-	}
 	
 	
 	

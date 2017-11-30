@@ -9,6 +9,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -20,7 +21,6 @@ import org.springframework.stereotype.Component;
 import com.yqueue.scube.model.ContactInfo;
 import com.yqueue.scube.model.DoctorsAddress;
 import com.yqueue.scube.model.DoctorsDetails;
-import com.yqueue.scube.model.User;
 import com.yqueue.scube.service.UserDbService;
 
 /**
@@ -34,7 +34,7 @@ public class DoctorsEndpoints {
 	@Autowired
 	private UserDbService userDbService;
 
-	@GET
+	@GET               
 	@Path("/")
 	@Produces("application/json")
 	public List<DoctorsDetails> getAllDoctors() {
@@ -76,38 +76,36 @@ public class DoctorsEndpoints {
 	}*/
 
 	@GET
-	@Path("/city")
+	@Path("/city/{city}")
 	@Produces("application/json")
-	public List<DoctorsAddress> findDoctorByCity(@QueryParam("city") String city) {
+	public List<DoctorsAddress> findDoctorByCity(@PathParam("city") String city) {
 		List<DoctorsAddress> listOfDoctors = userDbService.findDoctorByCity(city);
 		return listOfDoctors;
 	}
 
 	@GET
-	@Path("/state")
+	@Path("/state/{state}")
 	@Produces("application/json")
-	public List<DoctorsAddress> findDoctorByState(@QueryParam("state") String state) {
+	public List<DoctorsAddress> findDoctorByState(@PathParam("state") String state) {
 		List<DoctorsAddress> listOfDoctors = userDbService.findDoctorByState(state);
 		return listOfDoctors;
 	}
 
 	@GET
-	@Path("/phone")
+	@Path("/phone/{phoneNo}")
 	@Produces("application/json")
-	public DoctorsDetails findDoctorByPhone(@QueryParam("phoneNo") String phoneNo) {
+	public DoctorsDetails findDoctorByPhone(@PathParam("phoneNo") String phoneNo) {
 		DoctorsDetails doctors = userDbService.findDoctorByPhone(phoneNo);
 		return doctors;
 	}
 
 	@GET
-	@Path("/pin")
+	@Path("/pin/{pincode}")
 	@Produces("application/json")
 	public List<DoctorsAddress> findDoctorByPinCode(@QueryParam("pincode") String pincode) {
 		List<DoctorsAddress> listOfDoctors = userDbService.findDoctorByPinCode(pincode);
 		return listOfDoctors;
 	}
-
-
 
 	@Path("/contactInfo")
 	@POST
